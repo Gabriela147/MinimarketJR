@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{master.html}">
+
+<head>
+	<meta charset="utf-8">
+	<title>Inicio</title>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+ 	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Neuton:wght@300&family=Newsreader:opsz,wght@6..72,300&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+		
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Neuton:wght@300&family=Newsreader:opsz,wght@6..72,300&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+		.custom-font {
+        font-family:'Alice', serif;
+        text-align: center;
+    }
+     .custom-heading {
+        color: rgb(100, 100, 100);
+    }
+   
+		body {
+			background-color: rgb(255, 255, 210);
+		}
+
+		h2 {
+			color: dimgrey;
+		}
+		.background-gradient {
+        background: linear-gradient(to right, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), 
+                    linear-gradient(135deg, #f6d365 10%, #fda085 100%); 
+        background-blend-mode: overlay; 
+        background-size: cover;
+    }
+	</style>
+</head>
+
+<body>
+	
+<div layout:fragment="content">
+    <div class="bg-light p-5 rounded custom-font"> 
+       <h1 class="display-1 mb-4 custom-heading">BIENVENIDO A <br><img width="100" height="100" src="https://img.icons8.com/doodle/100/knife-and-spatchula.png" alt="knife-and-spatchula"/>TutoRECETASMonchi<img width="100" height="100" src="https://img.icons8.com/doodle/100/knife-and-spatchula.png" alt="knife-and-spatchula"/></h1>
+        <h2 class="text-muted">Aquí tendrás a la mano los tutoriales más virales de las recetas más ricas del Perú.</h2>
+    </div>
+    <div class="background-gradient px-5 mt-5">
+        <h4 class="text-danger">RECETAS SUBIDAS RECIENTEMENTE:</h4>
+        <div class="row">
+	    <div class="col-md-3 my-5" th:each="receta : ${nuevasRecetas}" th:object="${receta}">
+	       <a th:href="@{/recetas/{id}(id=*{id})}" class="card shadow-lg" style="text-decoration:none;">
+	       <img th:src="@{/assets/{filename}(filename=*{rutaPortada})}" th:alt="*{titulo}" class="card-img-top">
+	       <div class="card-body">
+	          <h2 class="card-title fs-6" th:text="*{titulo}"></h2>
+	          <p th:text="*{#temporals.format(fechasubido,'dd/MM/yyyy')}" class="text-muted small"></p>
+	       </div>
+	       </a>
+	    </div>
+	</div>
+    </div>
+</div>
+
+
+
+</body>
+
+</html>

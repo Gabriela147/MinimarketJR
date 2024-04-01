@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{master.html}">
+
+<head>
+	<meta charset="utf-8">
+	<title>Editar Recetas</title>
+	<style>
+body {
+    background-color: rgb(255, 255, 210);
+}
+</style>
+
+</head>
+
+<body>
+		<div class="container-fluid">
+			<a class="navbar-brand" href="/">
+				<img width="50" height="50"
+					src="https://img.icons8.com/external-febrian-hidayat-flat-febrian-hidayat/50/external-chef-restaurant-febrian-hidayat-flat-febrian-hidayat.png"
+					alt="external-chef-restaurant-febrian-hidayat-flat-febrian-hidayat" />
+				RecetasPerú
+			</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+				data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item">
+						<a class="nav-link" href="/">Inicio</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/recetas">Recetario</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/admin">AdminRecetas</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	<div layout:fragment="content">
+		<h2><img width="45" height="45" src="https://img.icons8.com/badges/45/signing-a-document.png" alt="signing-a-document"/> EDITAR RECETA:</h2>
+		<br>
+		<div th:insert="admin/form :: form">
+		</div>
+	</div>
+</body>
+
+</html>

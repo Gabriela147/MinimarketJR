@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{master.html}">
+
+<head>
+	<meta charset="utf-8">
+	<title th:inline="text">Recetas</title>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+	<style>
+		body {
+			background-color: rgb(255, 255, 210);
+		}
+
+		h2 {
+			color: dimgrey;
+		}
+		.background-gradient {
+        background: linear-gradient(to right, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), 
+                    linear-gradient(135deg, #f6d365 10%, #fda085 100%); 
+        background-blend-mode: overlay; 
+        background-size: cover;
+        }
+	</style>
+</head>
+
+<body>
+	<div layout:fragment="content">
+		
+	<div class="background-gradient px-5 mt-5">
+       <h4 class="text-danger">TODAS LAS RECETAS REGISTRADAS:</h4>
+
+		<div class="row">
+			<div class="row">
+				<div class="col-md-3 my-5" th:each="receta : ${recetas}"
+					th:object="${receta}">
+					<a th:href="@{/recetas/{id}(id=*{id})}" class="card shadow-lg"
+						style="text-decoration: none;"> <img
+						th:src="@{/assets/{filename}(filename=*{rutaPortada})}"
+						th:alt="*{titulo}" class="card-img-top">
+						<div class="card-body">
+							<h2 class="card-title fs-6" th:text="*{titulo}"></h2>
+							<p th:text="*{#temporals.format(fechasubido,'dd/MM/yyyy')}"
+								class="text-muted small"></p>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		</div>
+	</div>
+
+</body>
+
+</html>
